@@ -1,0 +1,21 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Workshop Async Loading"
+run/main_scene="uid://bk8wksaukvaoi"
+config/features=PackedStringArray("4.3.2", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://src/Singletons/Global.gd"
+AsyncInstancer="*res://src/Singletons/AsyncInstancer.gd"

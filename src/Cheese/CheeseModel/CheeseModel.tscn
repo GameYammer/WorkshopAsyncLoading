@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ukinl46dc2m8"]
+
+[ext_resource type="PackedScene" uid="uid://cx1fvsx28pns6" path="res://assets/cheese3/cheddar_cheese/scene.gltf" id="1_l6juy"]
+
+[node name="CheeseModel" instance=ExtResource("1_l6juy")]

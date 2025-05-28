@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://bk8wksaukvaoi"]
+
+[ext_resource type="Script" uid="uid://cdnonehws1u5e" path="res://src/World/World.gd" id="1_7u3o3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u3o3"]
+
+[sub_resource type="Sky" id="Sky_j386w"]
+sky_material = SubResource("ProceduralSkyMaterial_7u3o3")
+
+[sub_resource type="Environment" id="Environment_avctt"]
+background_mode = 2
+sky = SubResource("Sky_j386w")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7u3o3"]
+size = Vector3(100, 2, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u3o3"]
+albedo_color = Color(0, 0.447059, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7u3o3"]
+material = SubResource("StandardMaterial3D_7u3o3")
+size = Vector3(100, 2, 100)
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_7u3o3")
+
+[node name="ButtonQuit" type="Button" parent="."]
+offset_left = 45.0
+offset_top = 27.0
+offset_right = 91.0
+offset_bottom = 62.0
+text = "Quit
+"
+
+[node name="ButtonMakeCheeseAsync" type="Button" parent="."]
+offset_left = 318.0
+offset_top = 68.0
+offset_right = 482.0
+offset_bottom = 103.0
+text = "Make Cheese Async"
+
+[node name="ButtonMakeRaptorAsync" type="Button" parent="."]
+offset_left = 323.0
+offset_top = 120.0
+offset_right = 487.0
+offset_bottom = 155.0
+text = "Make Raptor Async"
+
+[node name="ButtonMakeCheeseSync" type="Button" parent="."]
+offset_left = 565.0
+offset_top = 67.0
+offset_right = 729.0
+offset_bottom = 102.0
+text = "Make Cheese Sync"
+
+[node name="ButtonMakeRaptorSync" type="Button" parent="."]
+offset_left = 570.0
+offset_top = 119.0
+offset_right = 734.0
+offset_bottom = 154.0
+text = "Make Raptor Sync"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_avctt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.258819, -0.683013, 0.683013, 0, 0.707107, 0.707107, -0.965926, -0.183013, 0.183013, 0, 30, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.69276, 5.40564)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_7u3o3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_7u3o3")
+
+[node name="Cheeses" type="Node3D" parent="."]
+
+[connection signal="pressed" from="ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="ButtonMakeCheeseAsync" to="." method="_on_button_make_cheese_async_pressed"]
+[connection signal="pressed" from="ButtonMakeRaptorAsync" to="." method="_on_button_make_raptor_async_pressed"]
+[connection signal="pressed" from="ButtonMakeCheeseSync" to="." method="_on_button_make_cheese_sync_pressed"]
+[connection signal="pressed" from="ButtonMakeRaptorSync" to="." method="_on_button_make_raptor_sync_pressed"]
